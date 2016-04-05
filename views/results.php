@@ -15,6 +15,7 @@ $results = results_controler();
   echo('<p>Voici la page de resultats du coureur </p>');
   while ($data = $results->fetch(PDO::FETCH_ASSOC))
   {
+    extract($data);
     print_r($data);
     echo('</br>');
   }
