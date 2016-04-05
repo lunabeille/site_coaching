@@ -15,7 +15,7 @@ function update_profile(){
   $year = '<input type="number" step="1" min="10" max="100" value="'.$age.'"/>';
   $city = '<input type="text" name="ville" value="'.$ville.'"/>';
   $vit='<input type="number" step="0.1" min="6.0" max="30.0" value="'.$vma.'"/>';
-  $best10 = "(format HH:MM:SS) <input type=\"text\" name=\"rp10\"/>";
+  $best10 = '(format HH:MM:SS) <input type="text" name="rp10" value="'.$rp10.'"/>';
   $data['nom'] = $name;
   $data['vma'] = $vit;
   $data['age'] = $year;
