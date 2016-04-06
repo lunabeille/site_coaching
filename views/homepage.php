@@ -1,7 +1,7 @@
 <?php
 //inclusion controleur
 require_once('../controlers/homepage_c.php');
-$data = get_profile();
+$data = homepage_controler();
 extract($data);
 ?>
 
