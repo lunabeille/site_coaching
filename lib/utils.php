@@ -19,32 +19,35 @@ function get_profile($id){
   return $link->query('SELECT * FROM coureur WHERE id ='.$id);
 }
 
-//récuperer les resultats d'un coureur
+//récuperer les resultats d'un coureur (infos utiles seulement)
 function get_results($id){
   $link = connect();
   //on récupere les resultats
-  return $link->query('SELECT c.nom, c.distance, c.date, res.chrono, res.classement, res.commentaire FROM course AS c,resultats_courses AS res WHERE res.idcourse = c.id AND res.idcoureur ='.$id);
+  return $link->query('SELECT c.nom, c.distance, c.date, res.chrono, res.classement, res.commentaire 
+                        FROM course AS c,resultats_courses AS res 
+                        WHERE res.idcourse = c.id 
+                        AND res.idcoureur ='.$id);
 }
 
-//pb : il faut que la requete ne modifie QUE le champs modifiés !
-//requete prepraree utile ici ?
+//mettre à jour la table coureur
 function update_profile($values, $id){
   $link = connect();
   extract($values);
-  $req = "UPDATE coureur SET nom = $nom, 
-                            age = $age, 
-                            ville = $ville,
-                            vma = $vma,
-                            rp10 = $rp10,
-                            rpsemi = $rpsemi
-                          WHERE id = $id";
+  //print_r($values);
+  try {
+    $req = "UPDATE coaching.coureur SET nom = '$nom', 
+                            age = '$age', 
+                            ville = '$ville',
+                            vma = '$vma',
+                            rp10 = '$rp10'
+                          WHERE coureur.id = $id";
   $res = $link->exec($req);
-  if($res)
-  {
-    echo 'Changements bien pris en compte';
+  $ok = true;
   }
-  else
+
+  catch (PDOException $e)
   {
-    echo('ca a pas marché');
+    $ok = false;
   }
+  return $ok;
 }

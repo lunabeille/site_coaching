@@ -1,5 +1,5 @@
 <?php
-include('../lib/utils.php');
+include_once('../lib/utils.php');
 
 //récupère les infos du coureur à afficher dans le profil
 function homepage_controler(){
