@@ -1,5 +1,4 @@
 <?php
-require_once('../controlers/results_c.php');
 $results = results_controler();
 ?>
 <!DOCTYPE html>
@@ -12,13 +11,32 @@ $results = results_controler();
 
 <body>
   <?php 
+  $first = true;
   echo('<p>Voici la page de resultats du coureur </p>');
+  echo '<table border = 1>';
   while ($data = $results->fetch(PDO::FETCH_ASSOC))
   {
-    extract($data);
-    print_r($data);
-    echo('</br>');
+    if($first)
+    {
+      echo '<tr>';
+      foreach($data as $champ => $valeur)
+      {
+        echo '<th>'.$champ.'</th>';
+      }
+      echo '</tr>';
+      $first = false;
+    }
+
+    echo '<tr>';
+    foreach($data as $champ => $valeur)
+    {
+      echo '<td>'.$valeur.'</td>';
+    }
+    echo '</tr>';
+    //extract($data);
+    //print_r($data);
   }
+  echo '</table/>';  
   ?>
 </body>
 </html>

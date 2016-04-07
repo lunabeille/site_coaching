@@ -16,7 +16,7 @@ extract($data);
 </head>
 
 <body>
-  <form method="post" action="../controlers/update_profile_c.php">
+  <form method="post" action="../controlers/update_profile.php">
   <?php include('profile.php');
   ?>
   <input type="submit"/>
