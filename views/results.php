@@ -13,7 +13,7 @@ $results = results_controler();
   <?php 
   $first = true;
   echo('<p>Voici la page de resultats du coureur </p>');
-  echo '<table border = 1>';
+  echo '<table border="solid">';
   while ($data = $results->fetch(PDO::FETCH_ASSOC))
   {
     if($first)

@@ -23,7 +23,7 @@ function get_profile($id){
 function get_results($id){
   $link = connect();
   //on récupere les resultats
-  return $link->query('SELECT * FROM resultats_courses WHERE idcoureur='.$id);
+  return $link->query('SELECT c.nom, c.distance, c.date, res.chrono, res.classement, res.commentaire FROM course AS c,resultats_courses AS res WHERE res.idcourse = c.id AND res.idcoureur ='.$id);
 }
 
 //pb : il faut que la requete ne modifie QUE le champs modifiés !
