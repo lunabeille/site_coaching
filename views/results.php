@@ -33,8 +33,6 @@ $results = results_controler();
       echo '<td>'.$valeur.'</td>';
     }
     echo '</tr>';
-    //extract($data);
-    //print_r($data);
   }
   echo '</table/>';  
   ?>
