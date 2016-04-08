@@ -25,9 +25,6 @@ else
   {
     echo('Veuillez saisir correctement les informations');
   }
-
 }
-//function update_infos(){
-  //$values = 
-//}
+
 ?>

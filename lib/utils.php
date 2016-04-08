@@ -19,6 +19,22 @@ function get_profile($id){
   return $link->query('SELECT * FROM coureur WHERE id ='.$id);
 }
 
+function get_race($id){
+  $link = connect();
+  return($link->query('SELECT*FROM course WHERE id='.$id));
+}
+
+//récupère la liste des participants et leurs chronos
+function get_participant_to_one_race($nom){
+  $link = connect();
+  //on veut récupérer l'id de la course correspondant au nom
+  $id = $link->query('SELECT id FROM course WHERE nom ='.$nom);
+  return($link->query('SELECT c.nom, res.chrono, res.classement, res.commentaire 
+                        FROM resultats_courses AS res, coureur AS c
+                        WHERE res.idcoureur = c.id
+                        AND res.idcourse ='.$id));
+}
+
 //récuperer les resultats d'un coureur (infos utiles seulement)
 function get_results($id){
   $link = connect();

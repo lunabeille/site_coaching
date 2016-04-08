@@ -32,7 +32,7 @@ $results = results_controler();
     {
       if ($champ == 'nom')
       {
-        echo '<td><a href="calendar.php">'.$valeur.'</a></td>';        
+        echo '<td><a href="calendar.php?nom='.$valeur.'">'.$valeur.'</a></td>';        
       }
       else 
       {
