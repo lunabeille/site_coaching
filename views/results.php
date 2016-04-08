@@ -30,7 +30,14 @@ $results = results_controler();
     echo '<tr>';
     foreach($data as $champ => $valeur)
     {
-      echo '<td>'.$valeur.'</td>';
+      if ($champ == 'nom')
+      {
+        echo '<td><a href="calendar.php">'.$valeur.'</a></td>';        
+      }
+      else 
+      {
+        echo '<td>'.$valeur.'</td>';
+      }
     }
     echo '</tr>';
   }
