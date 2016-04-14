@@ -1,13 +1,7 @@
 <?php
 $results = results_controler();
+include('header.php');
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-  <meta charset="utf-8"/>
-  <title> resultats coureur</title>
-</head>
 
 <body>
   <?php 
@@ -42,6 +36,5 @@ $results = results_controler();
     echo '</tr>';
   }
   echo '</table/>';  
+  include('footer.php');
   ?>
-</body>
-</html>

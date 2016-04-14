@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-  <meta charset="utf-8"/>
-  <title>Exercice formulaire php</title>
-</head>
+<php
+include('header.php');
+?>
 
 <body>
   <?php 
@@ -25,12 +21,4 @@
       <div> Meilleure perf Semi : <?php echo $rpsemi ?></div>
       <div> Meilleure perf marathon : </div>
   </fieldset>
-
-  <p> <a href="results.php">Lien vers les résultats </a></p>
-  <p> <a href="../controlers/update_profile.php"> Modifier mon profil </a></p>
-  <p> <a href="news.php">Lien vers les News </a></p>
-  <p> <a href="calendar.php">Lien vers le calendrier des courses </a></p>
-
-
-</body>
-</html>
+ 

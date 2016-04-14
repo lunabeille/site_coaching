@@ -8,5 +8,5 @@ function results_controler(){
 }
 
 //affiche les résultats du coureur
-require_once('../views/results.php');
+require_once('../views/display_results.php');
 ?>
