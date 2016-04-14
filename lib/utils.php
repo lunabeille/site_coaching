@@ -19,9 +19,9 @@ function get_profile($id){
   return $link->query('SELECT * FROM coureur WHERE id ='.$id);
 }
 
-function get_race($id){
+function get_race($name){
   $link = connect();
-  return($link->query('SELECT*FROM course WHERE id='.$id));
+  return($link->query('SELECT*FROM course WHERE nom='.$name));
 }
 
 //récupère la liste des participants et leurs chronos
