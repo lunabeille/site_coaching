@@ -28,11 +28,14 @@ function get_race($name){
 function get_participant_to_one_race($nom){
   $link = connect();
   //on veut récupérer l'id de la course correspondant au nom
-  $id = $link->query('SELECT id FROM course WHERE nom ='.$nom);
-  return($link->query('SELECT c.nom, res.chrono, res.classement, res.commentaire 
+  $idobj = ($link->query('SELECT id FROM course WHERE nom ="'.$nom.'"'));
+  //var_dump($idobj);
+  $id=$idobj->fetch();
+  var_dump($id);
+  return$link->query('SELECT c.nom, res.chrono, res.classement, res.commentaire 
                         FROM resultats_courses AS res, coureur AS c
                         WHERE res.idcoureur = c.id
-                        AND res.idcourse ='.$id));
+                        AND res.idcourse ='.$id['id']);
 }
 
 //récuperer les resultats d'un coureur (infos utiles seulement)

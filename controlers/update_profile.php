@@ -14,7 +14,6 @@ else
 {
 //    2.1 if the update went well, display the homepage
   $bool = update_profile($_POST, 4);
-  var_dump($bool);
   if($bool)
   {
     echo'Changements bien pris en compte';

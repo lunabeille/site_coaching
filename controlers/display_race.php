@@ -1,6 +1,10 @@
 <?php
 include_once('../lib/utils.php');
 
+//on souhaite afficher les infos sur la course, y compris les résultats
+//des participants
+
+
 //la page est requêtée depuis le lien sur la page results
 //le nom de la course à afficher est dans l'url ($_GET['nom'])
 if (isset($_GET['nom']))

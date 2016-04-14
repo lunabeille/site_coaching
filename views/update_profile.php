@@ -1,4 +1,4 @@
-<?php
+c<?php
 extract($data);
 $data['nom'] = '<input type="text" name="nom" value="'.$nom.'"/>';
 $data['vma'] = '<input type="number" name="vma" step="0.1" min="6.0" max="30.0" value="'.$vma.'"/>';
