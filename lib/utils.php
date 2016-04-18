@@ -27,15 +27,17 @@ function get_race($name){
 //récupère la liste des participants et leurs chronos
 function get_participant_to_one_race($nom){
   $link = connect();
-  //on veut récupérer l'id de la course correspondant au nom
-  $idobj = ($link->query('SELECT id FROM course WHERE nom ="'.$nom.'"'));
-  //var_dump($idobj);
-  $id=$idobj->fetch();
-  var_dump($id);
+  $race_id = get_race_id($nom);
   return$link->query('SELECT c.nom, res.chrono, res.classement, res.commentaire 
                         FROM resultats_courses AS res, coureur AS c
                         WHERE res.idcoureur = c.id
-                        AND res.idcourse ='.$id['id']);
+                        AND res.idcourse ='.$race_id['id']);
+}
+
+function get_race_id($nom){
+  $link = connect();
+  $id = ($link->query('SELECT id FROM course WHERE nom ="'.$nom.'"'));
+  return($id->fetch());
 }
 
 //récuperer les resultats d'un coureur (infos utiles seulement)

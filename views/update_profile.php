@@ -16,4 +16,4 @@ include('header.php');
   <input type="submit"/>
   <?php
     include('footer.php');
-    ?>
+  ?>
