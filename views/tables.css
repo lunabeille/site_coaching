@@ -1,16 +1,36 @@
-table {
+table, th, td {
+  border: 1px solid #D4E0EE;
   border-collapse: collapse;
-  width: 100%;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  color: #555;
 }
 
-th, td {
-  text-align: left;
-  background-color: silver;
-  padding : 8px;
+caption {
+  font-size: 150%;
+  font-weight: bold;
+  margin: 5px;
+}
+
+td, th {
+  padding: 4px;
+}
+
+table a:link {
+  color: #718ABE;
+  text-decoration: none;
+}
+
+table a:visited {
+  color: #718ABE;
+  text-decoration: none;
+}
+
+table a:hover {
+  color: #718ABE;
+  text-decoration: bold;
 }
 
 th {
-  background-color: 4CAF50;
+  font-weight: bold;
+  background: #E6EDF5;
 }
-
-tr:nth-child(even){background-color: #f2f2f2}

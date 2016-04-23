@@ -23,7 +23,8 @@ include('header.php');
       <div> Meilleure perf marathon : </div>
   </fieldset>
   <?php 
- if($_SERVER['PHP_SELF'] == "/sitecoaching/controlers/update_profile.php") 
+ if($_SERVER['PHP_SELF'] == "/sitecoaching/controlers/update_profile.php"
+          && $_POST['nom'] == NULL) 
   {
     echo '<input type="submit"/>';
   }
