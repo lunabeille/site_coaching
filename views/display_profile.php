@@ -1,12 +1,7 @@
 <?php
 $data = homepage_controler();
 extract($data);
-include('header.php');
+print_r($_SERVER['QUERY_STRING']);
+include('profile.php');
 ?>
-
-<body>  
-  <?php 
-  include('profile.php');
-  include('footer.php');
-  ?>
 

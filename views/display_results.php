@@ -7,7 +7,7 @@ include('header.php');
   <?php 
   $first = true;
   echo('<p>Voici la page de resultats du coureur </p>');
-  echo '<table border="solid">';
+  echo '<table>';
   while ($data = $results->fetch(PDO::FETCH_ASSOC))
   {
     if($first)

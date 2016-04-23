@@ -1,4 +1,4 @@
-<php
+<?php
 include('header.php');
 ?>
 
@@ -7,6 +7,7 @@ include('header.php');
   echo('<p>Voici la page d\'acceuil de profil du coureur</p>');
   ?>
   
+  <form method="POST" action="../controlers/update_profile.php">
   <fieldset>
      <legend>Informations générales</legend>
       <div> Prénom : <?php echo $nom; ?></div>
@@ -21,4 +22,14 @@ include('header.php');
       <div> Meilleure perf Semi : <?php echo $rpsemi ?></div>
       <div> Meilleure perf marathon : </div>
   </fieldset>
- 
+  <?php 
+ if($_SERVER['PHP_SELF'] == "/sitecoaching/controlers/update_profile.php") 
+  {
+    echo '<input type="submit"/>';
+  }
+  ?>
+  </form>
+
+ <?php 
+    include('footer.php');
+ ?>
