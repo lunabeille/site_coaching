@@ -1,8 +1,12 @@
-  <p> <a href="../controlers/display_results.php">Lien vers les résultats </a></p>
-  <p> <a href="../controlers/update_profile.php"> Modifier mon profil </a></p>
-  <p> <a href="news.php">Lien vers les News </a></p>
-  <p> <a href="calendar.php">Lien vers le calendrier des courses </a></p>
-
+<div id="menu">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="../controlers/display_results.php">Mes résultats </a></li>
+    <li><a href="../controlers/update_profile.php"> Modifier mon profil </a></li>
+    <li><a href="news.php">News </a></li>
+    <li><a href="calendar.php">Calendrier des courses </a></li>
+  </ul>
+</div>
 
 </body>
 </html>

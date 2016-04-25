@@ -3,6 +3,10 @@ include('header.php');
 ?>
 
 <body>
+ <?php 
+  include('footer.php');
+ ?>
+<div class="content">
   <?php 
   echo('<p>Voici la page d\'acceuil de profil du coureur</p>');
   ?>
@@ -30,7 +34,6 @@ include('header.php');
   }
   ?>
   </form>
-
- <?php 
-    include('footer.php');
- ?>
+</div>
+</body>
+</html>

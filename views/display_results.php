@@ -5,6 +5,10 @@ include('header.php');
 
 <body>
   <?php 
+    include('footer.php');
+ ?>
+  <div class="content">
+  <?php 
   $first = true;
   echo('<p>Voici la page de resultats du coureur </p>');
   echo '<table>';
@@ -36,5 +40,6 @@ include('header.php');
     echo '</tr>';
   }
   echo '</table/>';  
-  include('footer.php');
   ?>
+</body>
+</html>

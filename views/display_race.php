@@ -3,6 +3,10 @@ include('header.php');
 ?>
 
 <body>
+ <?php 
+    include('footer.php');
+ ?>
+ <div class="content">
   <div>
     <h3>INFORMATIONS SUR LA COURSE</h3>
     <div>
@@ -41,6 +45,6 @@ include('header.php');
     </p>
 
   </div>
-  
+  </div>
 </body>
-<?php include_once('footer.php'); ?>
+</html>
