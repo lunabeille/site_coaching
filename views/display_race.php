@@ -4,7 +4,7 @@ include('header.php');
 
 <body>
  <?php 
-    include('footer.php');
+    include('menu.php');
  ?>
  <div class="content">
   <div>

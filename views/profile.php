@@ -4,27 +4,27 @@ include('header.php');
 
 <body>
  <?php 
-  include('footer.php');
+  include('menu.php');
  ?>
 <div class="content">
   <?php 
-  echo('<p>Voici la page d\'acceuil de profil du coureur</p>');
+  echo('<p>Mon profil</p>');
   ?>
   
   <form method="POST" action="../controlers/update_profile.php">
   <fieldset>
      <legend>Informations générales</legend>
-      <div> Prénom : <?php echo $nom; ?></div>
-      <div> Age : <?php echo $age; ?></div>
-      <div> Ville : <?php echo $ville; ?></div>
+      <div class="champ"> Prénom : <?php echo $nom; ?></div>
+      <div class="champ"> Age : <?php echo $age; ?></div>
+      <div class="champ"> Ville : <?php echo $ville; ?></div>
   </fieldset>
 
   <fieldset>
     <legend>Profil coureur</legend>
-      <div> VMA: <?php echo $vma; ?></div>
-      <div> Meilleure perf 10km : <?php echo $rp10 ?></div>
-      <div> Meilleure perf Semi : <?php echo $rpsemi ?></div>
-      <div> Meilleure perf marathon : </div>
+      <div class="champ"> VMA: <?php echo $vma; ?></div>
+      <div class="champ"> Meilleure perf 10km : <?php echo $rp10 ?></div>
+      <div class="champ"> Meilleure perf Semi : <?php echo $rpsemi ?></div>
+      <div class="champ"> Meilleure perf marathon : </div>
   </fieldset>
   <?php 
  if($_SERVER['PHP_SELF'] == "/sitecoaching/controlers/update_profile.php"

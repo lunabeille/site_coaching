@@ -1,0 +1,26 @@
+#menu ul {
+  margin : 0;
+  padding: 0;
+  width: 15%;
+  list-style-type: none;
+  position: fixed;
+  height: 100%;
+}
+
+#menu ul li a {
+  text-decoration: none;
+  display: block;
+  background-color: #B0C4DE;
+  color: white;
+  padding : 10px 10px;
+}
+
+#menu ul li a:hover, #menu ul li .current {
+  background-color: #778899;
+}
+
+.content {
+  margin-left: 15%;
+  padding: 1px 16px;
+  height: 100%;
+}

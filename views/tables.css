@@ -1,3 +1,9 @@
+body { 
+font-family : arial, sans-serif; 
+color : #555;
+background-color : honeydew;
+}
+
 table, th, td {
   border: 1px solid #D4E0EE;
   border-collapse: collapse;
@@ -33,4 +39,24 @@ table a:hover {
 th {
   font-weight: bold;
   background: #E6EDF5;
+}
+
+fieldset {
+  width: 600px;
+  margin : 20px 20px;
+  border : 1px solid gray;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px #555; 
+}
+
+ fieldset >legend {
+  padding: 10px;
+  font-variant: small-caps;
+  font-size: 19px;
+  color: #585858;
+ }
+
+.champ {
+  margin : 5px;
+  padding: 3px 20px;
 }
