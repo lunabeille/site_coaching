@@ -11,6 +11,9 @@ include('header.php');
     <h3>INFORMATIONS SUR LA COURSE</h3>
     <div>
       <p><strong><?php echo $_GET['nom']; ?></strong></p>
+      <?php 
+      $
+      ?>
       
     </div>
   </div> 
@@ -21,12 +24,12 @@ include('header.php');
       <?php 
       $first = true;
       echo '<table>';
-      while ($participant = $list_participants->fetch(PDO::FETCH_ASSOC))
+      while(($participant = $participants->fetch(PDO::FETCH_ASSOC)))
       {
         if($first)
         {
           echo '<tr>';
-          foreach ($participant as $key =>$value)
+          foreach($participant as $key =>$value)
           {
             echo '<th>'.$key.'</th>';
           }
@@ -34,7 +37,7 @@ include('header.php');
           $first = false;
         }
         echo'<tr>';
-        foreach ($participant as $key => $value)
+        foreach($participant as $key => $value)
         {
           echo '<td>'.$value.'</td>';
         }

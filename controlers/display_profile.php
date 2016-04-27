@@ -8,5 +8,4 @@ function homepage_controler(){
   return $data;
 }
 
-require_once('../views/display_profile.php')
-?>
+require_once('../views/display_profile.php');
