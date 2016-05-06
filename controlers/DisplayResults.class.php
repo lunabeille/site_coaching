@@ -7,6 +7,7 @@ class DisplayResults extends Controler
   {
     require_once('utils.php');
     $results = get_results(4);
-    return $results;
+    $data = $results->fetchAll(PDO::FETCH_ASSOC); 
+    return $data;
   }
 }

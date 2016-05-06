@@ -6,9 +6,6 @@ $data['age'] = '<input type="number" name="age" step="1" min="10" max="100" valu
 $data['ville'] = '<input type="text" name="ville" value="'.$ville.'"/>';
 $data['rp10'] = '(format HH:MM:SS) <input type="text" name="rp10" value="'.$rp10.'"/>';
 extract($data);
+include('displayprofile.php');
 ?>
-
-  <?php include('profile.php');
-  ?>
-    
   

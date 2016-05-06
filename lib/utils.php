@@ -26,7 +26,7 @@ function get_race($name){
 }
 
 //récupère la liste des participants et leurs chronos
-function get_participant_to_one_race($nom){
+function get_participants($nom){
   $link = connect();
   $race_id = get_race_id($nom);
   return$link->query('SELECT c.nom, res.chrono, res.classement, res.commentaire 
