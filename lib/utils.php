@@ -16,13 +16,13 @@ function connect(){
 function get_profile($id){
   $link = connect();
   //on récupère toutes les infos du coureur qui s'est authentifié
-  return $link->query('SELECT * FROM coureur WHERE id ='.$id);
+  return $link->query('SELECT * FROM coureur WHERE id ='. $id);
 }
 
 function get_race($name){
   $link = connect();
-  return $link->query('SELECT * FROM course WHERE nom='.$name);
-  //return $res->fetchAll();
+  $res = $link->query('SELECT * FROM course WHERE nom ="'. $name . '"');
+  return $res;
 }
 
 //récupère la liste des participants et leurs chronos
@@ -45,7 +45,7 @@ function get_race_id($nom){
 function get_results($id){
   $link = connect();
   //on récupere les resultats
-  return $link->query('SELECT c.nom, c.distance, c.date, res.chrono, res.classement, res.commentaire 
+  return $link->query('SELECT c.nom, c.distance, c.date, res.chrono, res.classement 
                         FROM course AS c,resultats_courses AS res 
                         WHERE res.idcourse = c.id 
                         AND res.idcoureur ='.$id);
@@ -55,7 +55,7 @@ function get_results($id){
 function update_profile($values, $id){
   $link = connect();
   extract($values);
-  //print_r($values);
+
   try {
     $req = "UPDATE coaching.coureur SET nom = '$nom', 
                             age = '$age', 
@@ -66,10 +66,10 @@ function update_profile($values, $id){
   $res = $link->exec($req);
   $ok = true;
   }
-
   catch (PDOException $e)
   {
     $ok = false;
   }
+
   return $ok;
 }

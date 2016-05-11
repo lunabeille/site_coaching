@@ -13,14 +13,14 @@ class DisplayRace extends Controler
       $res = array();
       // on récupère la liste des participants
       $participants = get_participants($_GET['nom']);
-      //$res[0] = ($participants->fetchAll());
-      return $participants;
+      $data = $participants->fetchAll(PDO::FETCH_ASSOC); 
+      $res['liste_participants'] = $data;
 
       // on récupère les infos sur la course
       $race = get_race($_GET['nom']);
-      //$res[1] = ($race->fetchAll());
-      //return $res;
-      // return 
+      $data2 = $race->fetchAll(PDO::FETCH_ASSOC);
+      $res['infos_course'] = $data2;
+      return $res;
     }
   }
 }

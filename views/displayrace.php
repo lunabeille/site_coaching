@@ -1,10 +1,20 @@
+ <?php 
+    $participants = $data['liste_participants'];
+    $race = $data['infos_course'][0];
+    extract($race);
+  ?>
+
  <div class="content">
   <div>
     <h3>INFORMATIONS SUR LA COURSE</h3>
-    <div>
-      <p><strong><?php echo $_GET['nom']; ?></strong></p>
-    </div>
-  </div> 
+    <form method="POST" action="/sitecoaching/index.php">
+        <fieldset>
+          <legend><?php echo $race['nom'] ?></legend>
+            <div class="champ"> Distance : <?php echo $distance; ?> Km     </div>
+            <div class="champ"> Date : <?php echo $date; ?></div>
+            <div class="champ"> Ville : <?php echo $lieu; ?></div>
+          </fieldset>
+   </div>
 
   <div>
     <h3>ILS ONT PARTICIPE A CETTE COURSE !</h3>
@@ -12,12 +22,12 @@
       <?php 
       $first = true;
       echo '<table>';
-      while(($participant = $data->fetch(PDO::FETCH_ASSOC)))
+      foreach ($participants as $line) 
       {
         if($first)
         {
           echo '<tr>';
-          foreach($participant as $key =>$value)
+          foreach($line as $key =>$value)
           {
             echo '<th>'.$key.'</th>';
           }
@@ -25,7 +35,8 @@
           $first = false;
         }
         echo'<tr>';
-        foreach($participant as $key => $value)
+
+        foreach($line as $key => $value)
         {
           echo '<td>'.$value.'</td>';
         }
