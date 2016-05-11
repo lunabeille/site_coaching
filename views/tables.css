@@ -59,3 +59,17 @@ fieldset {
   margin : 5px;
   padding: 3px 20px;
 }
+
+#addres {
+  position : absolute;
+  top : 70px;
+  right : 200px;
+  text-decoration: none;
+  border: solid 1px #D4E0EE;
+  background-color: #D4E0EE;
+  margin: 10px 10px;
+}
+
+.content {
+  position : relative;
+}

@@ -1,21 +1,19 @@
 <div class="content">
+  <a id="addres" href="/sitecoaching/index.php/addResult">Ajouter un résultat</a>
+  <p>MES RESULTATS </p>
+  <table>
   <?php 
-  $first = true;
-  echo('<p>Voici la page de resultats du coureur </p>');
-  echo '<table>';
+  // affiche les headers (A COMPLETER CAS PAS DE RES !!!!!)
+  $line = $data[0];
+  echo '<tr>';
+  foreach($line as $champ => $valeur)
+  {
+    echo '<th>'.$champ.'</th>';
+  }
+  echo '</tr>';
+  // affiche le contenu
   foreach ($data as $line)
   {
-    if($first)
-    {
-      echo '<tr>';
-      foreach($line as $champ => $valeur)
-      {
-        echo '<th>'.$champ.'</th>';
-      }
-      echo '</tr>';
-      $first = false;
-    }
-
     echo '<tr>';
     foreach($line as $champ => $valeur)
     {
