@@ -7,7 +7,7 @@ const DEFAULT_CONTROLER = 'displayProfile';
 
 $context = array(
     'layout' => 'layout',
-    'title'  => 'TEST'
+    'title'  => 'RUN FOR YOUR LIFE'
 );
 
 $path = dirname(__FILE__);
