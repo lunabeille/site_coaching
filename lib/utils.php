@@ -50,11 +50,12 @@ function get_race_id($nom){
 //récuperer les resultats d'un coureur (infos utiles seulement)
 function get_results($id){
   $link = connect();
-  //on récupere les resultats
-  return $link->query('SELECT c.nom, c.distance, c.date, res.chrono, res.classement 
+  //on récupere les resultats SELECT pseudo, message, DATE_FORMAT(date, '%d/%m/%Y %Hh%imin%ss') AS date FROM minichat
+  return $link->query("SELECT c.nom, c.distance, DATE_FORMAT(c.date, '%d - %m - %Y') AS date, res.chrono, res.classement 
                         FROM course AS c,resultats_courses AS res 
                         WHERE res.idcourse = c.id 
-                        AND res.idcoureur ='.$id);
+                        AND res.idcoureur = $id
+                        ORDER BY c.date DESC");
 }
 
 //mettre à jour la table coureur
