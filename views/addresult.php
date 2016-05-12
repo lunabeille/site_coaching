@@ -16,12 +16,16 @@
      </select>
      </div>
       <div class="champ"> Chrono : 
-        <input type="text"/></div>
+        <input type="text" maxlength=2 size=2/> h
+        <input type="text" maxlength=2 size=2/> min
+        <input type="text" maxlength=2 size=2/> s     
+      </div>
       <div class="champ"> Classement : 
-        <input type="text"/></div>
+        <input type="text" size=5/></div>
       <div class="champ"> Commentaire :
-        <input type="text"/></div>
-        <input type="submit" style="float : right">
+      <textarea rows=4 cols=50></textarea>
+      </div>
+      <input type="submit" value="Enregistrer ma perf" style="float : right">
   </fieldset>
 </form>
 </div>
