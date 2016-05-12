@@ -25,6 +25,12 @@ function get_race($name){
   return $res;
 }
 
+function get_races(){
+  $link = connect();
+  $res = $link->query('SELECT nom FROM course');
+  return $res;
+}
+
 //récupère la liste des participants et leurs chronos
 function get_participants($nom){
   $link = connect();
