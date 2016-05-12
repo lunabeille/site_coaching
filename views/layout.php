@@ -3,6 +3,7 @@
     <head>
         <title><?php echo $context['title']; ?></title>
         <meta charset="UTF-8">
+        <link rel="shortcut icon" href="../views/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="../views/tables.css">
         <link rel="stylesheet" type="text/css" href="../views/menu.css">
     </head>
