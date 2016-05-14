@@ -44,13 +44,15 @@ function get_participants($nom){
 function get_race_id($nom){
   $link = connect();
   $id = ($link->query('SELECT id FROM course WHERE nom ="'.$nom.'"'));
-  return($id->fetch());
+  return($id->fetch(PDO::FETCH_COLUMN));
 }
 
-//récuperer les resultats d'un coureur (infos utiles seulement)
+/* Récupère les resultats d'un coureur
+* @return : pdo statement, résultat de la requête sur la table
+* @parmas : $id : int (id du coureur)
+*/
 function get_results($id){
   $link = connect();
-  //on récupere les resultats SELECT pseudo, message, DATE_FORMAT(date, '%d/%m/%Y %Hh%imin%ss') AS date FROM minichat
   return $link->query("SELECT c.nom, c.distance, DATE_FORMAT(c.date, '%d - %m - %Y') AS date, res.chrono, res.classement 
                         FROM course AS c,resultats_courses AS res 
                         WHERE res.idcourse = c.id 
@@ -58,7 +60,10 @@ function get_results($id){
                         ORDER BY c.date DESC");
 }
 
-//mettre à jour la table coureur
+/* met à jour les informations concernant un coureur
+* @return true si udpate ok, false sinon
+* @params: $values : array (nouvelles valeurs) ; $id : id du coureur
+*/
 function update_profile($values, $id){
   $link = connect();
   extract($values);
@@ -77,6 +82,36 @@ function update_profile($values, $id){
   {
     $ok = false;
   }
+  return $ok;
+}
 
+/*
+* Enregistre un nouveau résultat dans la table resultats_course
+* @ return : true si enregistrement ok, false autrement
+* @ params : $values : tableau contenant les données, $id coureur (int)
+*/
+function add_result($values, $id_coureur){
+  // 1. récupération de l'ID de la course sélectionnée
+  $id_course = get_race_id($values['race']);
+  print_r($id_course);
+
+  $link = connect();
+  extract($values);
+  try
+  {
+    $req = "INSERT INTO coaching.resultats_courses 
+                      VALUES('$idcoureur', 
+                              '$id_course',
+                              '$chrono', 
+                              '$classement',
+                              'commentaire'
+                              )";
+   $res = $link->exec($req);
+   $ok = true;
+  }
+  catch(PDOException $e)
+  {
+    $ok = false;
+  }
   return $ok;
 }
