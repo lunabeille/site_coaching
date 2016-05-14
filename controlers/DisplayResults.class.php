@@ -6,7 +6,7 @@ class DisplayResults extends Controler
   public function execute ($params = array())
   {
     require_once('utils.php');
-    $results = get_results(4);
+    $results = get_results(1);
     $data = $results->fetchAll(PDO::FETCH_ASSOC); 
     return $data;
   }

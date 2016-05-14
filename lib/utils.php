@@ -93,18 +93,21 @@ function update_profile($values, $id){
 function add_result($values, $id_coureur){
   // 1. récupération de l'ID de la course sélectionnée
   $id_course = get_race_id($values['race']);
-  print_r($id_course);
 
+  // 2. ajout du résultat dans la table 
   $link = connect();
+  // 2.1 mise au format time du chrono
   extract($values);
+  $chrono = "$heure:$min:$sec";
+  print_r($chrono);
   try
   {
     $req = "INSERT INTO coaching.resultats_courses 
-                      VALUES('$idcoureur', 
+                      VALUES('$id_coureur', 
                               '$id_course',
                               '$chrono', 
                               '$classement',
-                              'commentaire'
+                              '$commentaire'
                               )";
    $res = $link->exec($req);
    $ok = true;
