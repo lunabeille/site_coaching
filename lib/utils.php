@@ -12,26 +12,36 @@ function connect(){
   return $link;
 }
 
-//récupérer les infos du coureur pour la page d'accueil
+/* Récupère les infos du coureur pour la page d'accueil
+* @return : PDO Statement 
+* @params : int (id du coureur qui s'est authentifié
+*/
 function get_profile($id){
   $link = connect();
-  //on récupère toutes les infos du coureur qui s'est authentifié
   return $link->query('SELECT * FROM coureur WHERE id ='. $id);
 }
 
+/* Récupère les information concernant une course
+* @return : PDO statement
+* @params : String (le nom de la course)
+*/
 function get_race($name){
   $link = connect();
   $res = $link->query('SELECT * FROM course WHERE nom ="'. $name . '"');
   return $res;
 }
-
+/* Récupère la liste complète des courses
+* @return : PDO statement (liste des noms des courses)
+*/
 function get_races(){
   $link = connect();
-  $res = $link->query('SELECT nom FROM course');
-  return $res;
+  return = $link->query('SELECT nom FROM course');
 }
 
-//récupère la liste des participants et leurs chronos
+/*récupère la liste des participants à une course donnée
+* @return : PDO statement (liste coureurs + chronos)
+* @params : String (le nom de la course sélectionnée)
+*/
 function get_participants($nom){
   $link = connect();
   $race_id = get_race_id($nom);
@@ -41,6 +51,11 @@ function get_participants($nom){
                         AND res.idcourse ='.$race_id['id']);
 }
 
+/* Permet de récupérer l'id d'une course donnée
+* (pour éviter des requêtes sql à rallonge)
+* @return : int (id de la course)
+* @params : String (nom de la course)
+*/
 function get_race_id($nom){
   $link = connect();
   $id = ($link->query('SELECT id FROM course WHERE nom ="'.$nom.'"'));
