@@ -2,10 +2,9 @@
 
 class DisplayRace extends Controler 
 {
-  // collects the runner's results to display into an array
-  public function execute ($params = array())
+  public function execute($params = array())
   {
-    require_once('utils.php');
+    require_once('utils.results.php');
     //la page est requêtée depuis le lien sur la page d_results
     //le nom de la course à afficher est dans l'url ($_GET['nom'])
     if(isset($_GET['nom']))

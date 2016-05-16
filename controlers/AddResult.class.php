@@ -4,7 +4,7 @@ class AddResult extends Controler
 {
   public function execute($params = array())
   {
-    require_once('utils.php');
+    require_once('utils.results.php');
     // Si le $-POST contient des valeurs : ajout résultat 
     // dans la bdd et display results avec message "OK"    
     if(isset($_POST['min']))
@@ -18,9 +18,9 @@ class AddResult extends Controler
       }
     }
     // récupération liste des courses pour le select du form.
-    $list_races = get_races();
-    $data = $list_races->fetchAll(PDO::FETCH_COLUMN, "nom");
-    return $data;
+    $list_races = get_races_select(1);
+   // $data = $list_races->fetchAll(PDO::FETCH_COLUMN, "nom");
+    return $list_races;
   }
 
 }

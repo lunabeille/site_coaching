@@ -9,7 +9,14 @@
         <?php 
         foreach($data as $race => $value)
         {
-          echo "<option>" . $value . "</option>";
+          if(preg_match("[A-Z]*$", $value))
+          {
+            echo "<option value=\"$value\" disabled>" . $value . "</option>";
+          }
+          else  
+          {
+            echo "<option value = \"$value\">" . $value . "</option>";
+          }
         }
         ?>
      </select>
