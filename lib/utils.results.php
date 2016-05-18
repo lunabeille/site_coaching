@@ -1,5 +1,6 @@
 <?php 
-require_once("utils.php");
+require_once('utils.php');
+
 /* Récupère les resultats d'un coureur
 * @return : pdo statement, résultat de la requête sur la table
 * @parmas : $id : int (id du coureur)
@@ -27,7 +28,6 @@ function add_result($values, $id_coureur){
   // 2.1 mise au format time du chrono
   extract($values);
   $chrono = "$heure:$min:$sec";
-  print_r($chrono);
   try
   {
     $req = "INSERT INTO coaching.resultats_courses 
@@ -59,13 +59,13 @@ function get_race($name){
 /* Récupère la liste complète des courses
 * @return : PDO statement (liste des noms des courses)
 */
-function get_races(){
+function get_races_name(){
   $link = connect();
   return $link->query('SELECT nom FROM course');
 }
 
 function get_races_select($id){
-    $races = get_races();
+    $races = get_races_name();
     $all_races = $races->fetchAll(PDO::FETCH_COLUMN, "nom");
     $results = get_results($id);
     $ran_races = $results->fetchAll(PDO::FETCH_COLUMN, "nom");

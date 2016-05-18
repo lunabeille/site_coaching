@@ -19,7 +19,6 @@ class AddResult extends Controler
     }
     // récupération liste des courses pour le select du form.
     $list_races = get_races_select(1);
-   // $data = $list_races->fetchAll(PDO::FETCH_COLUMN, "nom");
     return $list_races;
   }
 

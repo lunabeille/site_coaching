@@ -7,15 +7,16 @@
      <div> 1 - Sélectionner une course : 
      <select name="race">
         <?php 
-        foreach($data as $race => $value)
+        foreach($data as $race => $name)
         {
-          if(preg_match("[A-Z]*$", $value))
+          // si le nom de la course est en majuscule : déja courue
+          if(preg_match('/^[\'A-Z\d\s]+$/', $name))
           {
-            echo "<option value=\"$value\" disabled>" . $value . "</option>";
+            echo "<option value=\"$name\" disabled>" . $name . "</option>";
           }
           else  
           {
-            echo "<option value = \"$value\">" . $value . "</option>";
+            echo "<option value = \"$name\">" . $name . "</option>";
           }
         }
         ?>
