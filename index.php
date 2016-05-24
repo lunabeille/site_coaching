@@ -25,6 +25,11 @@ function __autoload($classname)
 function routing($uri)
 {
     $pattern = '# /([a-zA-Z_]+ (?:\.[a-z]+)? ) #xms';
+    
+    if($uri === '' || $uri === '/')
+    {
+        $uri = '/' . DEFAULT_CONTROLER;
+    }
 
     if(!preg_match_all($pattern, $uri, $matches))
     {
