@@ -7,12 +7,16 @@ require_once('utils.php');
 */
 function get_results($id){
   $link = connect();
-  return $link->query("SELECT c.nom, c.distance, DATE_FORMAT(c.date, '%d - %m - %Y') AS date, res.chrono, res.classement 
-                        FROM course AS c,resultats_courses AS res 
-                        WHERE res.idcourse = c.id 
-                        AND res.idcoureur = $id
-                        ORDER BY c.date DESC");
+  return $req1 = $link->query("SELECT c.nom, c.lieu, e.distance, DATE_FORMAT(e.date, '%d - %m - %Y') AS date, res.chrono, res.classement 
+                        FROM resultats_courses AS res
+                        JOIN edition AS e
+                        ON res.idcourse = e.id
+                        JOIN course AS c
+                        ON e.id_course = c.id
+                        WHERE res.idcoureur = $id
+                        ORDER BY e.date DESC");
 }
+//LEFT JOIN course ON e.id_course = course.id
 
 /*
 * Enregistre un nouveau résultat dans la table resultats_course
@@ -53,7 +57,7 @@ function add_result($values, $id_coureur){
 */
 function get_race($name){
   $link = connect();
-  $res = $link->query('SELECT * FROM course WHERE nom ="'. $name . '"');
+  $res = $link->query('SELECT * FROM edition WHERE nom ="'. $name . '"');
   return $res;
 }
 /* Récupère la liste complète des courses
@@ -61,7 +65,7 @@ function get_race($name){
 */
 function get_races_name(){
   $link = connect();
-  return $link->query('SELECT nom FROM course');
+  return $link->query('SELECT nom FROM edition');
 }
 
 function get_races_select($id){
@@ -100,6 +104,6 @@ function get_participants($nom){
 */
 function get_race_id($nom){
   $link = connect();
-  $id = ($link->query('SELECT id FROM course WHERE nom ="'.$nom.'"'));
+  $id = ($link->query('SELECT id FROM edition WHERE nom ="'.$nom.'"'));
   return($id->fetch(PDO::FETCH_COLUMN));
 }
