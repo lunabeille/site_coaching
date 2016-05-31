@@ -65,12 +65,12 @@ function get_race($name){
 */
 function get_races_name(){
   $link = connect();
-  return $link->query('SELECT nom FROM edition');
+  return $link->query('SELECT nom FROM course');
 }
 
 function get_races_select($id){
     $races = get_races_name();
-    $all_races = $races->fetchAll(PDO::FETCH_COLUMN, "nom");
+    $all_races = $races->fetchAll(PDO::FETCH_COLUMN);
     $results = get_results($id);
     $ran_races = $results->fetchAll(PDO::FETCH_COLUMN, "nom");
     foreach ($all_races as &$race) 
