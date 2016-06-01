@@ -12,7 +12,7 @@
           // si le nom de la course est en majuscule : déja courue
           if(preg_match('/^[\'A-Z\d\s]+$/', $name))
           {
-            echo "<option value=\"$name\" disabled>" . $name . "</option>";
+            echo "<option value=\"$name\" disabled>" . strtolower($name) . "</option>";
           }
           else  
           {
