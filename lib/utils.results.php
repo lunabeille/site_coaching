@@ -73,25 +73,25 @@ function get_races_names_and_dates(){
 }
 
 function get_races_select($id){
-    $races = get_races_names_and_dates();
-    $all_races = $races->fetchAll(PDO::FETCH_ASSOC);
-   //var_dump($all_races);
-   $races_select = array();
-   $races_select[$all_races[0]["nom"]] = array($all_races[0]["annee"]);
-   for($i = 1; $i < count($all_races); $i++)
+  $races = get_races_names_and_dates();
+  $all_races = $races->fetchAll(PDO::FETCH_ASSOC);
+  $races_select = array();
+  foreach ($all_races as $race => $value) 
+  {
+    $races_select[$value["nom"]][] = $value["annee"];
+  }
+  var_dump($races_select);
+  $results = get_results($id);
+  $ran_races = $results->fetchAll(PDO::FETCH_COLUMN, "nom");
+  foreach ($all_races as &$race) 
+  {
+    if(in_array($race, $ran_races))
     {
-      $races_select[$all_races[$i]["nom"]][] = $all_races[$i]["annee"];
-
-     // if($all_races[i]["nom"] == $all_races[i - 1]["nom"])
-     // {
-       // $races_select = ($all_races[i]["nom"] =>  ())
-      //}
-     // else
-      //{
-        //$races_select = ($all_races[i]["nom"] => $all_races[i]["annee"]);
+      $race=strtoupper($race);
     }
-    var_dump($races_select);
-    
+    unset($race);
+  }
+  return $all_races;   
 }
 
 /*récupère la liste des participants à une course donnée
