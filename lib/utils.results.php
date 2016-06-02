@@ -60,28 +60,38 @@ function get_race($name){
   $res = $link->query('SELECT * FROM edition WHERE nom ="'. $name . '"');
   return $res;
 }
-/* Récupère la liste complète des courses
+/* Récupère la liste complète des courses et leur date
 * @return : PDO statement (liste des noms des courses)
 */
-function get_races_name(){
+function get_races_names_and_dates(){
   $link = connect();
-  return $link->query('SELECT nom FROM course');
+  return $link->query('SELECT c.nom, e.id, YEAR(e.date) AS annee
+                FROM course AS c
+                JOIN edition AS e
+                ON c.id = e.id_course
+                ORDER BY c.nom, annee');
 }
 
 function get_races_select($id){
-    $races = get_races_name();
-    $all_races = $races->fetchAll(PDO::FETCH_COLUMN);
-    $results = get_results($id);
-    $ran_races = $results->fetchAll(PDO::FETCH_COLUMN, "nom");
-    foreach ($all_races as &$race) 
+    $races = get_races_names_and_dates();
+    $all_races = $races->fetchAll(PDO::FETCH_ASSOC);
+   //var_dump($all_races);
+   $races_select = array();
+   $races_select[$all_races[0]["nom"]] = array($all_races[0]["annee"]);
+   for($i = 1; $i < count($all_races); $i++)
     {
-      if(in_array($race, $ran_races))
-      {
-        $race=strtoupper($race);
-      }
-      unset($race);
+      $races_select[$all_races[$i]["nom"]][] = $all_races[$i]["annee"];
+
+     // if($all_races[i]["nom"] == $all_races[i - 1]["nom"])
+     // {
+       // $races_select = ($all_races[i]["nom"] =>  ())
+      //}
+     // else
+      //{
+        //$races_select = ($all_races[i]["nom"] => $all_races[i]["annee"]);
     }
-    return $all_races;
+    var_dump($races_select);
+    
 }
 
 /*récupère la liste des participants à une course donnée
@@ -104,6 +114,6 @@ function get_participants($nom){
 */
 function get_race_id($nom){
   $link = connect();
-  $id = ($link->query('SELECT id FROM edition WHERE nom ="'.$nom.'"'));
+  $id = ($link->query('SELECT id FROM course WHERE nom ="'.$nom.'"'));
   return($id->fetch(PDO::FETCH_COLUMN));
 }
