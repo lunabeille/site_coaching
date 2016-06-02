@@ -16,7 +16,6 @@ function get_results($id){
                         WHERE res.idcoureur = $id
                         ORDER BY e.date DESC");
 }
-//LEFT JOIN course ON e.id_course = course.id
 
 /*
 * Enregistre un nouveau résultat dans la table resultats_course
@@ -72,26 +71,34 @@ function get_races_names_and_dates(){
                 ORDER BY c.nom, annee');
 }
 
+
 function get_races_select($id){
   $races = get_races_names_and_dates();
   $all_races = $races->fetchAll(PDO::FETCH_ASSOC);
   $races_select = array();
   foreach ($all_races as $race => $value) 
   {
-    $races_select[$value["nom"]][] = $value["annee"];
+    $races_select[$value["nom"]][] = array($value["annee"], $value['id']);
   }
-  var_dump($races_select);
+//  var_dump($races_select);
   $results = get_results($id);
   $ran_races = $results->fetchAll(PDO::FETCH_COLUMN, "nom");
-  foreach ($all_races as &$race) 
-  {
-    if(in_array($race, $ran_races))
-    {
-      $race=strtoupper($race);
-    }
-    unset($race);
-  }
-  return $all_races;   
+  $final_select = array();
+  $final_select["ran_races"] = $ran_races;
+  $final_select["all_races"] = $races_select;
+  // foreach ($races_select as $race => $infos) 
+  // {
+  //   if(in_array($race, $ran_races))
+  //   {
+  //     $final_select[strtoupper($race)] = [$infos];
+  //   }
+  //   else
+  //   {
+  //     $final_select[$race] = [$infos];      
+  //   }
+  // }
+   var_dump($final_select);
+  return $final_select;   
 }
 
 /*récupère la liste des participants à une course donnée
