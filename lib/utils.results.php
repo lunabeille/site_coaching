@@ -7,7 +7,7 @@ require_once('utils.php');
 */
 function get_results($id){
   $link = connect();
-  return $req1 = $link->query("SELECT c.nom, c.lieu, e.distance, DATE_FORMAT(e.date, '%d - %m - %Y') AS date, res.chrono, res.classement 
+  return $req1 = $link->query("SELECT c.nom, c.lieu,e.id, e.distance, DATE_FORMAT(e.date, '%d - %m - %Y') AS date, res.chrono, res.classement 
                         FROM resultats_courses AS res
                         JOIN edition AS e
                         ON res.idcourse = e.id
@@ -71,36 +71,66 @@ function get_races_names_and_dates(){
                 ORDER BY c.nom, annee');
 }
 
+/* Récupère la liste des courses correspondant à une 
+* année donnée
+* @ params : String (l'année de la course)
+* @ return : PDO stmt (nom course + id_édition)
+*/ 
 
-function get_races_select($id){
-  $races = get_races_names_and_dates();
+function get_races_names_and_id($year){
+  $link = connect();
+  return $link->query("SELECT c.nom, e.id
+                FROM course AS c
+                JOIN edition AS e
+                ON c.id = e.id_course
+                WHERE YEAR(e.date)='$year'
+                ORDER BY c.nom");
+}
+
+
+/* Récupère les informations pour afficher la liste des courses 
+* dans le select de la page addResult
+* @ params : id du coureur, année de la course souhaitée
+* @ return : array () contenant la liste des courses présentes 
+*           dans la bdd correspondant à l'année choisie
+* (+ l'id de l'édition pour l'insert)
+*/
+function get_races_select($id_coureur, $year){
+  $races = get_races_names_and_id($year);
   $all_races = $races->fetchAll(PDO::FETCH_ASSOC);
   $races_select = array();
-  foreach ($all_races as $race => $value) 
+
+  // Mise en forme du tableau pour le select
+  foreach ($all_races as $value) 
   {
-    $races_select[$value["nom"]][] = array($value["annee"], $value['id']);
+    $races_select[$value["nom"]] = $value['id'];
   }
-//  var_dump($races_select);
-  $results = get_results($id);
-  $ran_races = $results->fetchAll(PDO::FETCH_COLUMN, "nom");
+
+  // Récupération des id des éditions déjà courues
+  $all_results = get_results($id_coureur);
+  $ran_races_id = $all_results-> fetchAll(PDO::FETCH_COLUMN, 2);
   $final_select = array();
-  $final_select["ran_races"] = $ran_races;
-  $final_select["all_races"] = $races_select;
-  // foreach ($races_select as $race => $infos) 
-  // {
-  //   if(in_array($race, $ran_races))
-  //   {
-  //     $final_select[strtoupper($race)] = [$infos];
-  //   }
-  //   else
-  //   {
-  //     $final_select[$race] = [$infos];      
-  //   }
-  // }
-   var_dump($final_select);
+  // Mise en maj des courses déjà courues
+  foreach ($races_select as $race =>$id) 
+  {
+    if(in_array($id, $ran_races_id))
+    {
+      $final_select[strtoupper($race)] = $id;
+    }
+    else
+    {
+      $final_select[$race] = $id;      
+    }
+  }  
   return $final_select;   
 }
 
+
+function get_years(){
+  $link = connect();
+  return$link->query('SELECT YEAR(e.date) AS annee
+                      FROM edition AS e');
+}
 /*récupère la liste des participants à une course donnée
 * @return : PDO statement (liste coureurs + chronos)
 * @params : String (le nom de la course sélectionnée)

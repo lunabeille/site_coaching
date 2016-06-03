@@ -10,6 +10,7 @@ class AddResult extends Controler
     if(isset($_POST['min']))
     {      
       $updated = add_result($_POST, 1);
+      var_dump($updated);
       // ajout ok : 
       if($updated)
       {
@@ -17,8 +18,11 @@ class AddResult extends Controler
           'msg' => 'Nouvelle perf bien ajoutée !'));
       }
     }
-    // récupération liste des courses pour le select du form.
-    $list_races = get_races_select(1);
+   
+
+  // récupération liste des courses pour le select du form.
+    // en fonction de l'année sélectionnée ($_GET["annee"])  
+    $list_races = get_races_select(1, $_GET["annee"]);
     return $list_races;
   }
 
