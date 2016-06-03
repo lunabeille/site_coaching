@@ -23,8 +23,9 @@ function get_results($id){
 * @ params : $values : tableau contenant les données, $id coureur (int)
 */
 function add_result($values, $id_coureur){
-  // 1. récupération de l'ID de la course sélectionnée
-  $id_course = get_race_id($values['race']);
+  // 1. récupération de l'ID de l'édition de la course
+  $id_course = $values["race"];
+  var_dump($id_course);
 
   // 2. ajout du résultat dans la table 
   $link = connect();
@@ -142,15 +143,4 @@ function get_participants($nom){
                         FROM resultats_courses AS res, coureur AS c
                         WHERE res.idcoureur = c.id
                         AND res.idcourse ='.$race_id['id']);
-}
-
-/* Permet de récupérer l'id d'une course donnée
-* (pour éviter des requêtes sql à rallonge)
-* @return : int (id de la course)
-* @params : String (nom de la course)
-*/
-function get_race_id($nom){
-  $link = connect();
-  $id = ($link->query('SELECT id FROM course WHERE nom ="'.$nom.'"'));
-  return($id->fetch(PDO::FETCH_COLUMN));
 }

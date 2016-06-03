@@ -8,16 +8,16 @@
     <div> Sélectionner une course : 
     <select name="race">
     <?php 
-    foreach($data as $race => $value)
+    foreach($data as $race => $id)
     {
     // si le nom de la course est en majuscule : déja courue
       if(preg_match('/^[\'A-Z\d\s]+$/', $race))
       {
-        echo "<option value=\"$race\" disabled>" . strtolower($race) . "</option>";
+        echo "<option value=\"$id\" disabled>" . strtolower($race) . "</option>";
       }
       else  
       {
-        echo "<option value = \"$race\">" . $race . "</option>";
+        echo "<option value = \"$id\">" . $race . "</option>";
       }      
     }
     ?>
@@ -25,9 +25,9 @@
     </div>
     
     <div class="champ"> Chrono : 
-      <input type="text" maxlength=2 size=2 name="heure"/> h
-      <input type="text" maxlength=2 size=2 name="min"/> min
-      <input type="text" maxlength=2 size=2 name="sec"/> s     
+      <input type="text" maxlength=2 size=2 name="heure" required/> h
+      <input type="text" maxlength=2 size=2 name="min" required/> min
+      <input type="text" maxlength=2 size=2 name="sec" required/> s     
     </div>
     
     <div class="champ"> Classement : 
