@@ -7,6 +7,10 @@
   echo '<tr>';
   foreach($line as $champ => $valeur)
   {
+    if($champ == 'id')
+    {
+      continue;
+    }
     echo '<th>'.$champ.'</th>';
   }
   echo '</tr>';
@@ -16,9 +20,13 @@
     echo '<tr>';
     foreach($line as $champ => $valeur)
     {
-      if ($champ == 'nom')
+      if($champ == 'nom')
       {
         echo '<td><a href="/sitecoaching/index.php/displayRace?nom='.$valeur.'">'.$valeur.'</a></td>';        
+      }
+      else if($champ == 'id') 
+      {
+        echo('');
       }
       else 
       {
