@@ -1,5 +1,4 @@
 <div class="content">
-  <a id="addres" href="/sitecoaching/index.php/addResult">Ajouter un résultat</a>
   <p>MES RESULTATS </p>
   <table>
   <?php 
@@ -30,4 +29,10 @@
   }
   echo '</table/>';
   ?>
+  <p> ------------------------------------------------------------------- </p>
+  <div> 
+    <p>AJOUTER UN RESULTAT</p>
+    <a class="addres" href="/sitecoaching/index.php/addResult?annee=2016">2016</a>
+    <a class="addres" href="/sitecoaching/index.php/addResult?annee=2015">2015</a>
+  </div>
 </div>
