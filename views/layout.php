@@ -8,8 +8,13 @@
         <link rel="stylesheet" type="text/css" href="../views/menu.css">
     </head>
     <body>
-        <?php 
-          require_once ('menu.php');
+        <?php
+          // on n'affiche le menu que lorsque l'utilisateur est connecté
+          if(($_SERVER["PHP_SELF"] != "/sitecoaching/index.php/authentification")
+            || ($_POST["login"] != NULL))
+          {
+            require_once ('menu.php');
+          }
           if($data) extract($data); 
           require($view); 
         ?>

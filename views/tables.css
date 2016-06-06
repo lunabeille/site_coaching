@@ -1,7 +1,7 @@
 body { 
-font-family : arial, sans-serif; 
-color : #555;
-background-color : honeydew;
+  font-family : arial, sans-serif; 
+  color : #555;
+  background-color : honeydew;
 }
 
 table, th, td {
@@ -60,16 +60,37 @@ fieldset {
   padding: 3px 20px;
 }
 
-#addres {
-  position : absolute;
-  top : 70px;
-  right : 200px;
+.addres {
   text-decoration: none;
   border: solid 1px #D4E0EE;
   background-color: #D4E0EE;
-  margin: 10px 10px;
+  padding: 5px 5px;
+  color : gray;
+  margin-top: 20px;
 }
 
 .content {
   position : relative;
 }
+
+textarea {
+  vertical-align: top;
+}
+
+#login {
+  border: solid 1px #D4E0EE;
+  background-color: #D4E0EE;
+  padding: 5px 5px;
+  margin-top: 20px;
+  float: right;
+  color : #555;
+}
+
+.login-block{
+  width : 320px;
+  padding : 20px;
+}
+
+.input-logo {
+  float :left;
+  }
