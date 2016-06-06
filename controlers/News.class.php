@@ -15,7 +15,7 @@ class News extends Controler
     }
 
     // 2. Récupération des news section compet.
-    $compet =get_competition();
+    $compet = get_competition();
     if($compet != NULL)
     {
       $data['compet'] = $compet->fetch(PDO::FETCH_ASSOC);
@@ -25,7 +25,7 @@ class News extends Controler
     $res = get_resultats();
     if($res != NULL)
     {
-      $data['result'] = $res->fetch(PDO::FETCH_ASSOC);
+      $data['result'] = $res->fetchAll(PDO::FETCH_ASSOC);
     }
 
     // 4. Récupération des news "autre"

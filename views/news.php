@@ -32,5 +32,21 @@
 <br/>
 
 <div>
+  <h3> Les dernières perfs de nos champions</h3>
+  <?php 
+  if(!empty($data["result"]))
+  {
+    //extract($data["res"]);
+    foreach ($data["result"] as $result) 
+    {
+      echo "<p>";
+      echo "<strong>" . $result[titre] . "</strong><br/>";
+      echo $result["text"] . "<br/>";
+      echo $result["date"] . "<br/>";
+      echo '</p>';
+    } 
+  }
+  ?>
+</div>
 
 
