@@ -20,13 +20,14 @@
     echo '<tr>';
     foreach($line as $champ => $valeur)
     {
+      $id = $champ["id"];
       if($champ == 'nom')
       {
-        echo '<td><a href="/sitecoaching/index.php/displayRace?nom='.$valeur.'">'.$valeur.'</a></td>';        
+        echo '<td><a href="/sitecoaching/index.php/displayRace?id=' . $line["id"] . '&nom=' . $valeur . '">' . $valeur . '</a></td>';        
       }
       else if($champ == 'id') 
       {
-        echo('');
+        echo(''); // ou continue ?
       }
       else 
       {

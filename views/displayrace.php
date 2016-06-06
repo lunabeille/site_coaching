@@ -2,7 +2,7 @@
 
     $participants = $data['liste_participants'];
     $race = $data['infos_course'];
-    extract($race);
+    extract($race[0]);
   ?>
 
  <div class="content">
@@ -11,7 +11,7 @@
     <form method="POST" action="/sitecoaching/index.php">
         <fieldset>
           <legend><?php echo $race['nom'] ?></legend>
-            <div class="champ"> Distance : <?php echo $distance; ?> Km     </div>
+            <div class="champ"> Distance : <?php echo $distance; ?> Km </div>
             <div class="champ"> Date : <?php echo $date; ?></div>
             <div class="champ"> Ville : <?php echo $lieu; ?></div>
           </fieldset>

@@ -57,8 +57,13 @@ function add_result($values, $id_coureur){
 */
 function get_race($id){
   $link = connect();
-  return $link->query('SELECT * FROM edition WHERE id ="'. $id . '"');
+  return $link->query('SELECT e.distance, e.denivele, e.date, e.commentaire, e.nb_participants, c.lieu 
+                      FROM edition AS e
+                      JOIN course AS c
+                      ON e.id_course = c.id
+                      WHERE e.id ="'. $id . '"');
 }
+
 /* Récupère la liste complète des courses et leur date
 * @return : PDO statement (liste des noms des courses)
 */
