@@ -19,7 +19,6 @@ class DisplayRace extends Controler
       $race = get_race($_GET['id']);
       $data2 = $race->fetchAll(PDO::FETCH_ASSOC);
       $data2["nom"] = $_GET["nom"];
-
       $res['infos_course'] = $data2;
       return $res;
     }

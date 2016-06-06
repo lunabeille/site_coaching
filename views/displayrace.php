@@ -7,7 +7,7 @@
 
  <div class="content">
   <div>
-    <h3>INFORMATIONS SUR LA COURSE</h3>
+    <h3>Informations sur la course</h3>
     <form method="POST" action="/sitecoaching/index.php">
         <fieldset>
           <legend><?php echo $race['nom'] ?></legend>
@@ -17,8 +17,13 @@
           </fieldset>
    </div>
 
+   <div>
+      <h3> Ma course en quelques mots</h3>
+    <?php echo $commentaire; ?>
+   </div>
+
   <div>
-    <h3>ILS ONT PARTICIPE A CETTE COURSE !</h3>
+    <h3>Ils ont participé à cette course !</h3>
     <p>
       <?php 
       $first = true;
