@@ -1,6 +1,7 @@
  <?php 
+
     $participants = $data['liste_participants'];
-    $race = $data['infos_course'][0];
+    $race = $data['infos_course'];
     extract($race);
   ?>
 
