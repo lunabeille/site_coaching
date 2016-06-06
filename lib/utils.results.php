@@ -24,8 +24,8 @@ function get_results($id){
 */
 function add_result($values, $id_coureur){
   // 1. récupération de l'ID de l'édition de la course
+  var_dump($values);
   $id_course = $values["race"];
-  var_dump($id_course);
 
   // 2. ajout du résultat dans la table 
   $link = connect();
@@ -36,7 +36,7 @@ function add_result($values, $id_coureur){
   {
     $req = "INSERT INTO coaching.resultats_courses 
                       VALUES('$id_coureur', 
-                              '$id_course',
+                              CAST('$id_course' AS UNSIGNED),
                               '$chrono', 
                               '$classement',
                               '$commentaire'
@@ -55,10 +55,9 @@ function add_result($values, $id_coureur){
 * @return : PDO statement
 * @params : String (le nom de la course)
 */
-function get_race($name){
+function get_race($id){
   $link = connect();
-  $res = $link->query('SELECT * FROM edition WHERE nom ="'. $name . '"');
-  return $res;
+  return $link->query('SELECT * FROM edition WHERE id ="'. $id . '"');
 }
 /* Récupère la liste complète des courses et leur date
 * @return : PDO statement (liste des noms des courses)
@@ -136,11 +135,10 @@ function get_years(){
 * @return : PDO statement (liste coureurs + chronos)
 * @params : String (le nom de la course sélectionnée)
 */
-function get_participants($nom){
+function get_participants($id_edition){
   $link = connect();
-  $race_id = get_race_id($nom);
-  return$link->query('SELECT c.nom, res.chrono, res.classement, res.commentaire 
+  return$link->query('SELECT c.nom, res.chrono, res.classement 
                         FROM resultats_courses AS res, coureur AS c
                         WHERE res.idcoureur = c.id
-                        AND res.idcourse ='.$race_id['id']);
+                        AND res.idcourse ='. $id_edition);
 }

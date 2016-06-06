@@ -10,7 +10,6 @@ class AddResult extends Controler
     if(isset($_POST['min']))
     {      
       $updated = add_result($_POST, 1);
-      var_dump($updated);
       // ajout ok : 
       if($updated)
       {
