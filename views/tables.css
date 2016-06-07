@@ -78,19 +78,39 @@ textarea {
 }
 
 #login {
-  border: solid 1px #D4E0EE;
+  border: 1px solid blueviolet;
   background-color: #D4E0EE;
-  padding: 5px 5px;
-  margin-top: 20px;
-  float: right;
+  display: block;
+  width: 66%;
+  padding : 10px 10px 10px;
+  position : relative;
+  margin-top: 10px;
+  margin-left : 45px;
   color : #555;
 }
 
 .login-block{
   width : 320px;
   padding : 20px;
+  border: 1px blueviolet solid;
+}
+
+.login-block input {
+  border : 1px solid blueviolet;
+  margin-left : 20px;
+  padding-left: 10px;
 }
 
 .input-logo {
-  float :left;
+  position : relative;
+  margin-bottom : -7px;
   }
+.login-block legend {
+  font-variant: small-caps;
+}
+
+#welcome {
+  font-variant: small-caps;
+  color: gray;
+  margin-left: 35px;
+}
