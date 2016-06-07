@@ -1,30 +1,30 @@
 <div class="content">
   <?php 
-  echo('<p>Mon profil</p>');
+  echo('<h2 id="profile-name">' . $nom . '</h2>');
   ?>
   
   <form method="POST" action="/sitecoaching/index.php/updateProfile">
   <fieldset>
      <legend>Informations générales</legend>
-      <div class="champ"> Prénom : <?php echo $nom; ?></div>
-      <div class="champ"> Age : <?php echo $age; ?></div>
-      <div class="champ"> Ville : <?php echo $ville; ?></div>
+      <div class="champ"><label for="age"> Age :</label> <?php echo $age; ?></div>
+      <div class="champ"><label for="ville"> Ville :</label> <?php echo $ville; ?></div>
   </fieldset>
 
   <fieldset>
     <legend>Profil coureur</legend>
-      <div class="champ"> VMA: <?php echo $vma; ?></div>
-      <div class="champ"> Meilleure perf 10km : <?php echo $rp10 ?></div>
-      <div class="champ"> Meilleure perf Semi : <?php echo $rpsemi ?></div>
-      <div class="champ"> Meilleure perf marathon : </div>
-  </fieldset>
+      <div class="champ"><label for="vma"> VMA:</label> <?php echo $vma; ?></div>
+      <div class="champ"><label for="rp10"> Meilleure perf 10km :</label> <?php echo $rp10 ?></div>
+      <div class="champ"><label for="rpsemi"> Meilleure perf Semi :</label> <?php echo $rpsemi ?></div>
+      <div class="champ"><label for="rpmarathon"> Meilleure perf marathon : </label></div>
+  
   <?php 
  if($_SERVER['PHP_SELF'] == "/sitecoaching/index.php/updateProfile"
           && $_POST['nom'] == NULL) 
   {
-    echo '<input type="submit"/>';
+    echo '<input type="submit" class="submit" value="Envoyer"/>';
   }
   ?>
+  </fieldset>
   </form>
 </div>
 
