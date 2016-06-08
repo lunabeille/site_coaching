@@ -73,10 +73,14 @@ th {
 }
 
 fieldset {
-  width: 500px;
+  width: 600px;
   margin : 20px 20px;
   border : 0.5px solid gray;
   border-radius: 2px;
+}
+
+.profile {
+  width: 400px;
 }
 
  fieldset >legend {
@@ -155,4 +159,8 @@ fieldset label{
 .champ {
   margin-left: 20px;
   margin-bottom : 10px;
+}
+
+input[type="text"].chrono {
+  width: 20px;
 }

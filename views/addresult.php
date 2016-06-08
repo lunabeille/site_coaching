@@ -5,7 +5,7 @@
  <form method="POST" action="/sitecoaching/index.php/addResult">
   <fieldset>
     <legend>Ma Performance</legend>
-    <div> Sélectionner une course : 
+    <div class="champ"> Sélectionner une course : 
     <select name="race">
     <?php 
     foreach($data as $race => $id)
@@ -24,21 +24,21 @@
     </select>
     </div>
     
-    <div class="champ"> Chrono : 
-      <input type="text" maxlength=2 size=2 name="heure" required/> h
-      <input type="text" maxlength=2 size=2 name="min" required/> min
-      <input type="text" maxlength=2 size=2 name="sec" required/> s     
+    <div class="champ"><label for="h">Chrono : </label>
+      <input type="text" maxlength=2 size=2 class="chrono" id="h" name="heure" placeholder="hh" required/> :
+      <input type="text" maxlength=2 size=2 class="chrono" name="min" placeholder="mm"required/> :
+      <input type="text" maxlength=2 size=2 class="chrono" name="sec" placeholder="ss"required/> :     
     </div>
     
-    <div class="champ"> Classement : 
-      <input type="text" size=5 name="classement"/>
+    <div class="champ"> <label for="clssmt">Classement : </label>
+      <input type="text" size=5 id="clssmt" name="classement"/>
     </div>
     
-    <div class="champ"> Commentaire :
-      <textarea rows=4 cols=50 name="commentaire"></textarea>
+    <div class="champ"> <label for="comment">Commentaire : </label>
+      <textarea rows=4 cols=50 id="comment" name="commentaire"></textarea>
     </div>
     
-    <input type="submit" value="Enregistrer ma perf" style="float : right">
+    <input type="submit" class="submit" value="Enregistrer ma perf" style="float : right">
   </fieldset>
 </form>
 </div>

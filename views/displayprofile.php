@@ -4,13 +4,13 @@
   ?>
   
   <form method="POST" action="/sitecoaching/index.php/updateProfile">
-  <fieldset>
+  <fieldset class="profile">
      <legend>Informations générales</legend>
       <div class="champ"><label for="age"> Age :</label> <?php echo $age; ?></div>
       <div class="champ"><label for="ville"> Ville :</label> <?php echo $ville; ?></div>
   </fieldset>
 
-  <fieldset>
+  <fieldset class="profile">
     <legend>Profil coureur</legend>
       <div class="champ"><label for="vma"> VMA:</label> <?php echo $vma; ?></div>
       <div class="champ"><label for="rp10"> Meilleure perf 10km :</label> <?php echo $rp10 ?></div>
