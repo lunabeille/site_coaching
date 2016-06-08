@@ -6,7 +6,8 @@ require_once("utils.php");
 */
 function get_profile($id){
   $link = connect();
-  return $link->query('SELECT * FROM coureur WHERE id ='. $id);
+  return $link->query('SELECT id, nom, age, ville, vma, HOUR(rp10)AS rp10h, MINUTE(rp10) AS rp10min, SECOND(rp10) AS rp10sec, rpsemi, commentaire
+                       FROM coureur WHERE id ='. $id);
 }
 
 /* met à jour les informations concernant un coureur
@@ -17,13 +18,14 @@ function update_profile($values, $id){
   $link = connect();
   extract($values);
 
+  $chrono10 = "$rp10h:$rp10min:$rp10sec";
   try {
-    $req = "UPDATE coaching.coureur SET nom = '$nom', 
-                            age = '$age', 
-                            ville = '$ville',
-                            vma = '$vma',
-                            rp10 = '$rp10'
-                          WHERE coureur.id = $id";
+    $req = "UPDATE coaching.coureur 
+            SET  age = '$age', 
+                 ville = '$ville',
+                 vma = '$vma',
+                 rp10 = '$chrono10'
+            WHERE coureur.id = $id";
   $res = $link->exec($req);
   $ok = true;
   }

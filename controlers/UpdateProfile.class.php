@@ -7,7 +7,7 @@ class UpdateProfile extends Controler
     require_once('utils.profile.php');
 
     // 1.if $_POST has values (submit clicked)
-    if(isset($_POST['nom']))
+    if(!empty($_POST))
     {
       // send them to the database
       $updated = update_profile($_POST, 1);
