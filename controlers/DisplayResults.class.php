@@ -6,7 +6,7 @@ class DisplayResults extends Controler
   public function execute ($params = array())
   {
     require_once('utils.results.php');
-    $results = get_results(1);
+    $results = get_results($_SESSION["user_id"]);
     $data = $results->fetchAll(PDO::FETCH_ASSOC); 
     return $data;
   }

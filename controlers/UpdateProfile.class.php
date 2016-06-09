@@ -10,7 +10,7 @@ class UpdateProfile extends Controler
     if(!empty($_POST))
     {
       // send them to the database
-      $updated = update_profile($_POST, 1);
+      $updated = update_profile($_POST, $_SESSION["user_id"]);
      
       //if the update went well, display the profile with a message
       if($updated)
@@ -20,7 +20,7 @@ class UpdateProfile extends Controler
       }
     }
     // if $_POST is empty, only display the form with default values
-    $params = get_profile(1);
+    $params = get_profile($_SESSION["user_id"]);
     $data = $params->fetch(PDO::FETCH_ASSOC); 
     return $data;
   }

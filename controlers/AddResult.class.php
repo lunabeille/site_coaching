@@ -9,8 +9,8 @@ class AddResult extends Controler
     // dans la bdd et display results avec message "OK"    
     if(isset($_POST['min']))
     {      
-      $updated = add_result($_POST, 1);
-      // ajout ok : 
+      $updated = add_result($_POST, $_SESSION["user_id"]);
+      // ajout ok :   
       if($updated)
       {
         throw new RedirectException("DisplayResults", array(
@@ -19,9 +19,9 @@ class AddResult extends Controler
     }
    
 
-  // récupération liste des courses pour le select du form.
+    // récupération liste des courses pour le select du form.
     // en fonction de l'année sélectionnée ($_GET["annee"])  
-    $list_races = get_races_select(1, $_GET["annee"]);
+    $list_races = get_races_select($_SESSION["user_id"], $_GET["annee"]);
     return $list_races;
   }
 

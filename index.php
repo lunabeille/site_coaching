@@ -72,7 +72,11 @@ function main()
     // retrieves controler and verifies its a Controler ancestor
     list($Controler, $path) = routing($_SERVER['REQUEST_URI']);
     //$Controler = 'DisplayProfile'
-
+    session_start();
+    if(!(isset($_SESSION["user_id"])))
+    {
+      header("/sitecoaching/index.php/authentification");
+    }
     $params = array();
 
     $done = false; 
@@ -103,14 +107,9 @@ function main()
     while(!$done);
 
     // on prépare la vue à afficher
-    // en récupérant le nom de la vue dans le
+    // en récupérant le nom de la vue dans le controle
     $view = VIEW_DIR . '/' . $controler->getView() . '.php';
-    /*ob_start();
-    if($data) extract($data);
-    require($view);
-    $html = ob_get_clean();
-    */
-
+    
     // on inclut le layout
     require(VIEW_DIR . '/' . $context['layout'] . '.php');
 }
