@@ -1,5 +1,6 @@
 <?php 
 require_once("utils.php");
+
 /* Récupère les infos du coureur pour la page d'accueil
 * @return : PDO Statement 
 * @params : int (id du coureur qui s'est authentifié
@@ -55,4 +56,17 @@ function check_user($login, $passwd)
     }
     return false;
   }
+}
+
+/*
+*  Retourne l'id de l'utilisateur pour le fournir 
+* à $_SESSION
+* @ return : int (user id)
+* @ params : le username
+*/
+function get_user_id($login)
+{
+  $link=connect();
+  $res = $link->query('SELECT id FROM authentification WHERE login ="' . $login . '"');
+  return $res->fetch(PDO::FETCH_ASSOC); 
 }

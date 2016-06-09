@@ -22,7 +22,6 @@ class UpdateProfile extends Controler
     // if $_POST is empty, only display the form with default values
     $params = get_profile(1);
     $data = $params->fetch(PDO::FETCH_ASSOC); 
-    //$this->setView("updateprofile"); 
     return $data;
   }
 }
