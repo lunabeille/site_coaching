@@ -6,14 +6,19 @@ class Authentification extends Controler
   public function execute ($params = array())
   {
     require_once('utils.profile.php');
-    if(!isset($_POST["login"]))
+    if(!empty($_POST["username"]) && !empty($_POST["passwd"]))
     {
-      $data = array();
-      return $data;
+      $login = $_POST["username"];
+      $passwd = $_POST["passwd"];
+      $user_exists = check_user($login, $passwd);
+
+      if($user_exists)
+        {
+          throw new RedirectException("DisplayProfile", array());
+        }
     }
-    else
-      {
-        throw new RedirectException("DisplayProfile", array());
-      }
+    $data = array();
+    return $data;
   }
+
 }

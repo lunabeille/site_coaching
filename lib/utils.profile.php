@@ -35,3 +35,24 @@ function update_profile($values, $id){
   }
   return $ok;
 }
+
+/* Vérifie l'existence du couple login/password pour 
+* l'authentification et l'accès au site.
+* @return : true si ok, false sinon
+* @params : login et passwd rentrés dans le formulaire
+*/
+function check_user($login, $passwd)
+{
+  $link = connect();
+  $res = $link->query('SELECT * FROM authentification 
+                   WHERE login ="' . $login . '"');
+  $user = $res->fetch(PDO::FETCH_ASSOC);
+  if($res->rowCount() > 0)
+  {
+    if($user["passwd"] == $passwd)
+    {
+      return true;
+    }
+    return false;
+  }
+}
