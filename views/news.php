@@ -8,7 +8,7 @@
     echo"<p><strong> $titre </strong></p>";
     echo "<p>$text</p>";
     echo "<p> La date to save : $date </p>";
-    echo "<a href=\"$site\"> Inscriptions ici </a>";
+    echo "<a href=\"http://$site\"> Inscriptions ici </a>";
   }
 ?>
 </div>
