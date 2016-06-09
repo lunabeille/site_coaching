@@ -1,37 +1,37 @@
 <div class="content">
-  <h3> (Ici les dernières news, les photos des dernières courses etc. )</h3>
-<div> 
-  <?php 
-  if(!empty($data['compet']))
-  {
-    extract($data['compet']);
-    echo"<p><strong> $titre </strong></p>";
-    echo "<p>$text</p>";
-    echo "<p> La date to save : $date </p>";
-    echo "<a href=\"http://$site\"> Inscriptions ici </a>";
-  }
-?>
-</div>
-<br/>
-<br/>
-<br/>
+<h3> (Ici les dernières news, les photos des dernières courses etc. )</h3>
 
-<div>
-<?php 
-  if(!empty($data['entr']))
-  {
-    extract($data['entr']);
-    echo"<p><strong> Save the date ! </strong></p>";
-    echo "<div>$titre :</div>";
-    echo "<div>$text</div>";
-  }
-?>
-</div>
-<br/>
-<br/>
-<br/>
 
-<div>
+<form id="save-the-date">
+  <fieldset>
+    <legend>Save the date !</legend>
+      <?php
+      setlocale(LC_TIME, 'fr_FR.UTF8', 'fr.UTF8', 'fr_FR.UTF-8', 'fr.UTF-8');      
+      if(!empty($data['compet']))
+      {
+        extract($data['compet']);
+        echo"<p><strong> $titre </strong></p>";
+        echo "<div><p>$text</p>";
+        echo "<p> Date : le ". strftime('%d, %B, %Y', $date) . "</p>";
+        echo "<a href=\"http://$site\"> Inscriptions ici </a></div>";
+      }
+      ?>
+      <br/>
+      
+      ----------------------------------------------------------
+      <?php 
+        if(!empty($data['entr']))
+        {
+          extract($data['entr']);
+          echo"<p><strong> Prochain entraînement </strong></p>";
+          echo "<div>$titre :</div>";
+          echo "<div>$text</div>";
+        }
+      ?>
+  </fieldset>
+</form>
+
+<div id="last-results">
   <h3> Les dernières perfs de nos champions</h3>
   <?php 
   if(!empty($data["result"]))

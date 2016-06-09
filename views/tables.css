@@ -105,6 +105,7 @@ fieldset {
 
 textarea {
   vertical-align: top;
+  border : 1px solid gray;
 }
 
 #login {
@@ -129,6 +130,7 @@ textarea {
   border : 1px solid blueviolet;
   margin-left : 20px;
   padding-left: 10px;
+  width: 187px;
 }
 
 .input-logo {
@@ -163,4 +165,38 @@ fieldset label{
 
 input[type="text"].chrono {
   width: 20px;
+}
+
+select {
+  padding: 3px;
+  border : 1px solid gray;
+
+}
+#save-the-date fieldset
+{
+  width: 400px;
+  text-align: center;
+  padding: 30px;
+  border: none;
+}
+#save-the-date div{
+  text-align: left;
+}
+#save-the-date{
+  position : relative;
+  float : right;
+  margin-right: 50px;
+  margin-left: 50px;
+  padding : 5px;
+  background-color: #E6EDF5;
+  border: 0.5px blueviolet solid;
+}
+#save-the-date legend{
+  text-align: center;
+  padding : 5px;
+}
+
+#last-results {
+  margin-left: 20px;
+  text-align: justify;
 }

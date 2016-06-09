@@ -15,7 +15,7 @@
   padding : 10px 10px;
 }
 
-#menu ul li a:hover, #menu ul li .current {
+#menu ul li a:hover {
   background-color: #778899;
 }
 
