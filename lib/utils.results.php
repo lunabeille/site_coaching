@@ -24,7 +24,6 @@ function get_results($id){
 */
 function add_result($values, $id_coureur){
   // 1. récupération de l'ID de l'édition de la course
-  var_dump($values);
   $id_course = $values["race"];
 
   // 2. ajout du résultat dans la table 
