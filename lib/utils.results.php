@@ -33,14 +33,14 @@ function add_result($values, $id_coureur){
   $chrono = "$heure:$min:$sec";
   try
   {
-    $req = "INSERT INTO coaching.resultats_courses 
-                      VALUES('$id_coureur', 
-                              CAST('$id_course' AS UNSIGNED),
-                              '$chrono', 
-                              '$classement',
-                              '$commentaire'
-                              )";
-   $res = $link->exec($req);
+    $req = $link->prepare("INSERT INTO coaching.resultats_courses 
+                      VALUES(:id_coureur, CAST(:idcourse AS UNSIGNED), :chrono, :classement, :commentaire)");
+   $req->execute(array('id_coureur' => $id_coureur, 
+                                'idcourse' => $id_course,
+                                'chrono' => $chrono, 
+                                'classement' => $classement,
+                                'commentaire' => $commentaire
+                              ));
    $ok = true;
   }
   catch(PDOException $e)
