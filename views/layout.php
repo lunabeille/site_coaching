@@ -10,8 +10,7 @@
     <body>
         <?php
           // on n'affiche le menu que lorsque l'utilisateur est connecté
-          if(($_SERVER["PHP_SELF"] != "/sitecoaching/index.php/authentification")
-            || ($_POST["username"] != NULL))
+          if(!empty($_SESSION))
           {
             require_once ('menu.php');
           }
