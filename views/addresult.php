@@ -22,6 +22,7 @@
     }
     ?>
     </select>
+    <a href=""> Ajouter une course </a>
     </div>
     
     <div class="champ"><label for="h">Chrono : </label>
