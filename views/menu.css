@@ -11,7 +11,7 @@
   text-decoration: none;
   display: block;
   background-color: #B0C4DE;
-  color: white;
+  color: gray;
   padding : 10px 10px;
 }
 
@@ -24,3 +24,15 @@
   padding: 1px 16px;
   height: 100%;
 }
+
+#disconnect {
+  text-decoration: underline;
+  display: block;
+  background-color: honeydew;
+  color: gray;
+  padding : 10px 10px;
+  }
+
+  #menu #disconnect{
+  background-color: honeydew;
+  font-size: 13px;
