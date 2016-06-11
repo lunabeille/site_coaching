@@ -40,8 +40,9 @@
   ?>
   <p> ------------------------------------------------------------------- </p>
   <div> 
-    <p>AJOUTER UN RESULTAT</p>
+    <p>AJOUTER UN RESULTAT
     <a class="addres" href="/sitecoaching/index.php/addResult?annee=2016">2016</a>
     <a class="addres" href="/sitecoaching/index.php/addResult?annee=2015">2015</a>
+    </p>
   </div>
 </div>
