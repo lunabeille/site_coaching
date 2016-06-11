@@ -14,8 +14,8 @@
     <legend>Profil coureur</legend>
       <div class="champ"><label for="vma"> VMA:</label> <?php echo $vma; ?></div>
       <div class="champ"><label for="rp10"> Meilleure perf 10km :</label> <?php echo "$rp10h : $rp10min : $rp10sec" ?></div>
-      <div class="champ"><label for="rpsemi"> Meilleure perf Semi :</label> <?php echo $rpsemi ?></div>
-      <div class="champ"><label for="rpmarathon"> Meilleure perf marathon : </label></div>
+      <div class="champ"><label for="rpsemi"> Meilleure perf Semi :</label> <?php echo "$rpsemih : $rpsemimin : $rpsemisec" ?></div>
+      <!-- <div class="champ"><label for="rpmarathon"> Meilleure perf marathon : </label></div> -->
   
   <?php 
  if($_SERVER['PHP_SELF'] == "/sitecoaching/index.php/updateProfile"

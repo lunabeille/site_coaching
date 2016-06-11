@@ -28,6 +28,7 @@ function routing($uri)
     
     if($uri === '' || $uri === '/')
     {
+        
         $uri = '/' . DEFAULT_CONTROLER;
     }
 
@@ -70,9 +71,10 @@ function main()
 
     // ex : URI = 'index.php/displayProfile'
     // retrieves controler and verifies its a Controler ancestor
+    session_start();
     list($Controler, $path) = routing($_SERVER['REQUEST_URI']);
     //$Controler = 'DisplayProfile'
-    session_start();
+    
     if(!(isset($_SESSION["user_id"])))
     {
       header("/sitecoaching/index.php/authentification");

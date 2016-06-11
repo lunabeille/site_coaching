@@ -24,5 +24,4 @@ class AddResult extends Controler
     $list_races = get_races_select($_SESSION["user_id"], $_GET["annee"]);
     return $list_races;
   }
-
 }
