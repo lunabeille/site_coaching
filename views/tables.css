@@ -51,6 +51,10 @@ tr {
   margin-right: 5px;
 }
 
+tr:nth-child(odd) {
+  background: #E6EDF5;
+}
+
 table a:link {
   color: #718ABE;
   text-decoration: none;
