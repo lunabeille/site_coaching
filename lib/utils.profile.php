@@ -17,20 +17,24 @@ function get_profile($id){
 */
 function update_profile($values, $id){
   $link = connect();
-  extract($values);
 
   //mise au format date des rp10 et rpSemi 
-  $chrono10 = "$rp10h:$rp10min:$rp10sec";
-  $chrono21 = "$rpsemih:$rpsemimin:$rpsemisec";
-  try {
-    $req = "UPDATE coaching.coureur 
-            SET  age = '$age', 
-                 ville = '$ville',
-                 vma = '$vma',
-                 rp10 = '$chrono10',
-                 rpsemi = '$chrono21'
-            WHERE coureur.id = $id";
-  $res = $link->exec($req);
+  $chrono10 = $values["rp10h"] . ':' . $values["rp10min"] . ':' . $values["rp10sec"];
+  $chrono21 = $values["rp1semih"] . ':' . $values["rpsemimin"] . ':' . $values["rpsemisec"];
+  try 
+  {
+    $req = $link->prepare("UPDATE coaching.coureur 
+                          SET  age = :age, 
+                          ville = :ville,
+                          vma = :vma,
+                          rp10 = :chrono10,
+                          rpsemi = :chrono21
+                          WHERE coureur.id = $id");
+    $req->execute(array(':age' => $values["age"],
+                      ':ville' => $values["ville"],
+                      ':vma' => $values["vma"],
+                      ':chrono10' => $chrono10,
+                      ':chrono21' => $chrono21));
   $ok = true;
   }
   catch (PDOException $e)
