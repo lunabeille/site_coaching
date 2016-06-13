@@ -29,19 +29,18 @@ function add_result($values, $id_coureur){
   // 2. ajout du résultat dans la table 
   $link = connect();
   // 2.1 mise au format time du chrono
-  extract($values);
   $chrono = "$heure:$min:$sec";
   try
   {
     $req = $link->prepare("INSERT INTO coaching.resultats_courses 
                       VALUES(:id_coureur, CAST(:idcourse AS UNSIGNED), :chrono, :classement, :commentaire)");
-   $req->execute(array('id_coureur' => $id_coureur, 
-                                'idcourse' => $id_course,
-                                'chrono' => $chrono, 
-                                'classement' => $classement,
-                                'commentaire' => $commentaire
+    $req->execute(array('id_coureur' => $values["id_coureur"], 
+                                'idcourse' => $values["id_course"],
+                                'chrono' => $values["chrono"], 
+                                'classement' => $values["classement"],
+                                'commentaire' => $values["commentaire"]
                               ));
-   $ok = true;
+    $ok = true;
   }
   catch(PDOException $e)
   {
