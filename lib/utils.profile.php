@@ -52,12 +52,16 @@ function update_profile($values, $id){
 function check_user($login, $passwd)
 {
   $link = connect();
-  $res = $link->query('SELECT * FROM authentification 
-                   WHERE login ="' . $login . '"');
-  $user = $res->fetch(PDO::FETCH_ASSOC);
-  if($res->rowCount() > 0)
+  $passwd = $link->quote($passwd);
+  $req = $link->prepare('SELECT * FROM authentification 
+                         WHERE login =:login');
+  $req->bindValue('login', $login, PDO::PARAM_STR);
+  $req->execute();
+  $user = $req->fetch(PDO::FETCH_ASSOC);
+  if($req->rowCount() > 0)
   {
-    if($user["passwd"] == $passwd)
+    if("'".$user['passwd']."'" == $passwd)
+
     {
       return true;
     }
