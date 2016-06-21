@@ -7,6 +7,7 @@ const DEFAULT_CONTROLER = 'displayProfile';
 
 $context = array(
     'layout' => 'layout',
+    'ajax_layout' => 'ajax_layout',
     'title'  => 'RUN FOR YOUR LIFE'
 );
 
@@ -64,6 +65,12 @@ function routing($uri)
     );
 }
 
+function is_ajax_request()
+{
+    return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) 
+        && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
+}
+
 
 function main()
 {
@@ -111,9 +118,11 @@ function main()
     // on prépare la vue à afficher
     // en récupérant le nom de la vue dans le controle
     $view = VIEW_DIR . '/' . $controler->getView() . '.php';
+
+    $layout = $context[is_ajax_request() ? 'ajax_layout' : 'ajax'];
     
     // on inclut le layout
-    require(VIEW_DIR . '/' . $context['layout'] . '.php');
+    require(VIEW_DIR . '/' . $layout . '.php');
 }
 
 main();
