@@ -80,13 +80,22 @@ function get_races_names_and_dates(){
 * @ return : PDO stmt (nom course + id_édition)
 */ 
 
+// function get_races_names_and_id($year){
+//   $link = connect();
+//   return $link->query("SELECT c.nom, e.id, e.id_course
+//                 FROM course AS c
+//                 JOIN edition AS e
+//                 ON c.id = e.id_course
+//                 WHERE YEAR(e.date)='$year'
+//                 ORDER BY c.nom");
+
+// }
 function get_races_names_and_id($year){
   $link = connect();
-  return $link->query("SELECT c.nom, e.id
-                FROM course AS c
-                JOIN edition AS e
-                ON c.id = e.id_course
-                WHERE YEAR(e.date)='$year'
+  return $link->query("SELECT c.nom, e.id, e.id_course
+                FROM course AS c, edition AS e
+                WHERE c.id = e.id_course
+                AND YEAR(e.date)='$year'
                 ORDER BY c.nom");
 }
 

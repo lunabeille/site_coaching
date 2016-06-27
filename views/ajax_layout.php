@@ -1,4 +1,3 @@
 <?php
 if($data) extract($data); 
-require($view); 
-?>
+require($view);

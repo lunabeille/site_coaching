@@ -7,13 +7,15 @@ class AddRace extends Controler
  *
  *
  */
-  public function execute ($params = array())
+  public function execute($params = array())
   {
-    require_once('utils.resutlts.php');
-
-    if(isset($_GET['year']))
+    require_once('utils.results.php');
+   
+    if(isset($_POST['year']))
     {
-      if($_GET['year'] == "2015")
+      $races = array();
+      
+      if($_POST['year'] == "2015")
       {
         $year = "2016";
       }
@@ -21,10 +23,14 @@ class AddRace extends Controler
       {
         $year = "2015";
       }
+      
       $res = get_races_names_and_id($year);
-
-      while($race = $res->fetch(PDO::FETCH_ASSOC))
+      while(($race = $res->fetch(PDO::FETCH_ASSOC)))
       {
-        
+        $races[$race["id_course"]][] = utf8_encode($race["nom"]);
       }
+
+      return array('races' => $races);
     }
+  }
+}

@@ -12,4 +12,18 @@ function connect(){
   return $link;
 }
 
+// function check_data($data){
+  
+//   if(ctype_digit($data))
+//   {
+//     $data = intval($data);
+//   }
+//   else
+//   {
+//     $data = mysql_real_escape_string($data);
+//     $data = addcslashes($data, '%_');
+//   }
+//   return $data;
+// }
+
 

@@ -68,7 +68,7 @@ function routing($uri)
 function is_ajax_request()
 {
     return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) 
-        && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
+            && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
 }
 
 
@@ -119,7 +119,7 @@ function main()
     // en récupérant le nom de la vue dans le controle
     $view = VIEW_DIR . '/' . $controler->getView() . '.php';
 
-    $layout = $context[is_ajax_request() ? 'ajax_layout' : 'ajax'];
+    $layout = $context[is_ajax_request() ? 'ajax_layout' : 'layout'];
     
     // on inclut le layout
     require(VIEW_DIR . '/' . $layout . '.php');
