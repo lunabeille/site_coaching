@@ -1,4 +1,3 @@
-
 <div class="content">
   <p> AJOUTER UN RESULTAT </p>
 
@@ -22,7 +21,7 @@
     }
     ?>
     </select>
-    <a href=""> Ajouter une course </a>
+    <a href="./addRace"> Ajouter une course </a>
     </div>
     
     <div class="champ"><label for="h">Chrono : </label>

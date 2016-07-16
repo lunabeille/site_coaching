@@ -7,7 +7,7 @@ class RedirectException extends Exception
 
     public function __construct($Controler, $params)
     {
-        parent::__construct("redirect tp $controler");
+        parent::__construct("redirect to $controler");
 
         $this->Controler = $Controler;
         $this->params = $params;
