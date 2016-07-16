@@ -4,6 +4,7 @@ const CONTROLER_DIR = 'controlers';
 const LIB_DIR = 'lib';
 const VIEW_DIR = 'views';
 const DEFAULT_CONTROLER = 'displayProfile';
+const AUTH_CONTROLER = 'Authentification'; 
 
 $context = array(
     'layout' => 'layout',
@@ -13,10 +14,12 @@ $context = array(
 
 $path = dirname(__FILE__);
 set_include_path(
-    get_include_path()
-    . ":$path/" . CONTROLER_DIR  . '/'
-    . ":$path/" . LIB_DIR . '/'
-);
+    implode(':', array(
+        get_include_path(),
+        "$path/" . CONTROLER_DIR  . '/',
+        "$path/" . LIB_DIR . '/'
+    )
+));
 
 function __autoload($classname)
 {
@@ -29,7 +32,6 @@ function routing($uri)
     
     if($uri === '' || $uri === '/')
     {
-        
         $uri = '/' . DEFAULT_CONTROLER;
     }
 
@@ -41,9 +43,10 @@ function routing($uri)
     $path = $matches[1];
    
     // removes index.php if its in the path (no url rewriting)
+    $file = basename(__FILE__);
     for($i = 0, $l = count($path); $i < $l; $i++)
     {
-        if($path[$i] === basename(__FILE__))
+        if($path[$i] === $file)
         {
             array_splice($path, 0, $i +1);
             break; 
@@ -76,16 +79,22 @@ function main()
 {
     global $context;
 
-    // ex : URI = 'index.php/displayProfile'
-    // retrieves controler and verifies its a Controler ancestor
     session_start();
-    list($Controler, $path) = routing($_SERVER['REQUEST_URI']);
-    //$Controler = 'DisplayProfile'
-    
+
+    // use not connected -> redirect to auth controller 
     if(!(isset($_SESSION["user_id"])))
     {
-      header("/sitecoaching/index.php/authentification");
+        $Controler = AUTH_CONTROLER;
+        $path = CONTROLER_DIR . '/' . $Controler . '.class.php'; 
     }
+    else
+    {
+        // ex : URI = 'index.php/displayProfile'
+        // retrieves controler and verifies its a Controler ancestor
+        list($Controler, $path) = routing($_SERVER['REQUEST_URI']);
+        //$Controler = 'DisplayProfile'
+    }
+
     $params = array();
 
     $done = false; 
