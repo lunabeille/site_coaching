@@ -44,10 +44,12 @@ else
       <div class="champ">
         <input type="radio" name="distance" value="5"/> 5 km 
         <input type="radio" name="distance" value="10"/> 10 km 
-        <input type="radio" name="distance" value="15"/> 5 km 
         <input type="radio" name="distance" value="semi"/> semi 
-        <input type="radio" name="distance" value="marathon"/> marathon </br></br>
-        <label for="autre">Autre distance :  </label><input type="text" id="autre" name="distance"/> 
+        <input type="radio" name="distance" value="marathon"/> marathon 
+        <input type="radio" name="distance" value="autre" id="other"/> autre
+        <input type="text" id="autre" name="distance" style="display:none"/> 
+        </br></br>
+
       </div>
 
       <div class="champ">
@@ -107,5 +109,13 @@ else
      $(document).ready(function(){
         $('#datecalender').datepicker();
      });
+
+    // <-------- jquery pour l'input autre distance --------->
+     $(document).ready(function(){
+        $('#other').change(function(){
+          $('#autre').show();
+        });
+     });
+
   </script>
 <?php } ?>
