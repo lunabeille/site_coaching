@@ -28,13 +28,8 @@ else
         <select name="race" id="race">
           <option value=""> -- courses -- </option>
         </select>
+        <input type="text" name="autre_course" id="racename" style="display:none"/>
       </div>
-
-      <div class="champ">
-        <label for "addname"> Ou entrez le nom d'une nouvelle course :</label>
-        <input type="text" name="autre_course" id="racename"/>
-      </div>
-      <br/>
 
       <div class="champ">
         <label for=""> Sélectionner une date : </label>
@@ -47,7 +42,7 @@ else
         <input type="radio" name="distance" value="semi" class="radio_dist"/> semi 
         <input type="radio" name="distance" value="marathon" class="radio_dist"/> marathon 
         <input type="radio" name="distance" value="autre" id="other"/> autre
-        <input type="text" id="autre" name="distance" style="display:none"/> 
+        <input type="text" id="autre" name="distance" style="display:none" placeholder="km"/> 
         </br></br>
 
       </div>
@@ -99,6 +94,8 @@ else
               {
                 $('#race').append('<option value="' + index + '">' + value + '</option>');
               });
+                $('#race').append('<option value="autre_course"> Autre course </option>');
+
             }
           });
         }
@@ -118,6 +115,14 @@ else
 
         $('#other').change(function(){
           $('#autre').show();
+        });
+     });
+
+    // <-------- jquery pour l'input autre course --------->
+     $(document).ready(function(){
+        $('#race').change(function(){
+          var valeur_course = $('#race').val();
+          (valeur_course == 'autre_course') ? $('#racename').show(): $('#racename').hide();
         });
      });
 
